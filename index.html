@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSpace - Anonymous Peer Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Lobby Screen (Visible by default) -->
+    <div id="lobby-wrapper">
+        <div class="lobby-container">
+            <div class="logo-large">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 14.0901 3.70373 15.9926 4.90898 17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12C16 13.1046 15.1046 14 14 14H10C8.89543 14 8 13.1046 8 12Z" fill="currentColor"/></svg>
+            </div>
+            <h1>MindSpace</h1>
+            <p class="subtitle">A safe space to talk and listen.</p>
+
+            <div class="interests-box">
+                <div class="interests-header">
+                    <h3>What's on your mind?</h3>
+                    <span>(Optional)</span>
+                </div>
+                <div id="interests-tags">
+                    <button class="interest-tag" data-interest="Anxiety">Anxiety</button>
+                    <button class="interest-tag" data-interest="Depression">Depression</button>
+                    <button class="interest-tag" data-interest="Stress">Stress</button>
+                    <button class="interest-tag" data-interest="Relationships">Relationships</button>
+                    <button class="interest-tag" data-interest="Work">Work</button>
+                    <button class="interest-tag" data-interest="Loneliness">Loneliness</button>
+                </div>
+            </div>
+
+            <button id="start-chat-btn">
+                Start Text Chat
+            </button>
+            <p class="rules">Be respectful and kind to your peer.</p>
+        </div>
+    </div>
+
+    <!-- Chat Screen (Hidden by default) -->
+    <div id="chat-wrapper" class="hidden">
+        <header id="chat-header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 14.0901 3.70373 15.9926 4.90898 17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12C16 13.1046 15.1046 14 14 14H10C8.89543 14 8 13.1046 8 12Z" fill="currentColor"/></svg>
+                <h1>MindSpace</h1>
+            </div>
+            <button id="end-chat-btn">End Chat</button>
+        </header>
+
+        <main id="messages">
+            <div class="message system">
+                Connecting you with a peer who shares your interests...
+            </div>
+        </main>
+        
+        <!-- Gemini API Loader -->
+        <div id="ai-loader" class="hidden">
+            <div class="spinner"></div>
+        </div>
+        
+        <!-- Gemini API Tools -->
+        <div id="ai-tools">
+            <button id="icebreaker-btn" class="ai-tool-btn">✨ Suggest Icebreaker</button>
+            <button id="affirmation-btn" class="ai-tool-btn">✨ Positive Thought</button>
+        </div>
+
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off" required>
+            <button type="submit" id="send-button" aria-label="Send Message">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
